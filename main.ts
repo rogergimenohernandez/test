@@ -4,8 +4,10 @@ namespace SpriteKind {
 }
 // -------- BLOQUEO CON MUROS --------
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (p, muro) {
+    //p.x = p.x
+    //p.y = p.y
     p.x -= p.vx
-p.y -= p.vy
+    p.y -= p.vy
 music.thump.play()
 })
 // -------- CHOQUE CON FANTASMA --------
@@ -19,9 +21,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Ghost, function (_, g) {
     }
 })
 sprites.onOverlap(SpriteKind.Ghost, SpriteKind.Projectile, function (g, muro) {
+
+    //g.x -= g.vx
+    //g.y -= g.vy
     g.x -= g.vx
-g.y -= g.vy
-g.vx = 0 - g.vx
+    g.y -= g.vy
+    g.vx = 0 - g.vx
     g.vy = 0 - g.vy
 })
 // -------- COMER COMIDA --------
@@ -147,25 +152,26 @@ map = [
 "####################",
 "#........##........#",
 "#.####...##...####.#",
-"#.#  #.........#  #.#",
-"#O#  #.#####.#.#  #O#",
-"#.#  #.#   #.#.#  #.#",
-"#......#   #......#.#",
-"###.###.....###.###.#",
-"#.................. #",
-"##########  #########",
-"#...................#",
-"#..#####..#..#####..#",
-"#...................#",
-"#####################"
+"#.#  #........#  #.#",
+"#O#  #.####.#.#  #O#",
+"#.#  #.#  #.#.#  #.#",
+"#......#  #......#.#",
+"###.###....###.###.#",
+"#..................#",
+"##########  ########",
+"#..................#",
+"#..#####..#..#####.#",
+"#....#....#........#",
+"#..#...##...###....#",
+"####################"
 ]
 crearMapa()
 // -------- PACMAN --------
 let pac = sprites.create(pacRight[0], SpriteKind.Player)
 controller.moveSprite(pac, 60, 60)
 pac.setStayInScreen(true)
-pac.x = 20
-pac.y = 20
+pac.x = 80
+pac.y = 83
 for (let i = 0; i <= 2; i++) {
     ghosts.push(crearFantasma(i))
 }
